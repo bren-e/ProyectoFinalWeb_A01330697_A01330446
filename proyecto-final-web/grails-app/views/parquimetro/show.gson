@@ -1,0 +1,4 @@
+model {
+    Parquimetro parquimetro
+}
+json g.render(template:"parquimetro", model:[parquimetro:parquimetro])

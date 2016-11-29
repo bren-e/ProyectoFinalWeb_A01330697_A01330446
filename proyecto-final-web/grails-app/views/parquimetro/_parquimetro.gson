@@ -1,0 +1,9 @@
+model {
+    Parquimetro parquimetro
+}
+
+json {
+    nombre parquimetro.nombre
+    latitud parquimetro.latitud
+    longitud parquimetro.longitud
+}

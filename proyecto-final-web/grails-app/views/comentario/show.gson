@@ -1,0 +1,4 @@
+model {
+    Comentario comentario
+}
+json g.render(template:"comentario", model: [comentario:comentario])

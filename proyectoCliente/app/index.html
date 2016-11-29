@@ -1,0 +1,132 @@
+<!doctype html>
+<html ng-app="proyectoClienteApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Parquimetro App</title>
+    <meta name="description" content="ParquimetroApp">
+    <meta name="viewport" content="width=device-width">
+    <!-- bower:angular -->
+    <script src="scripts/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <!-- endbower -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <!--<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">-->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <script src="scripts/app.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/controllers/main.js"></script>
+    <!-- endbuild -->
+    <!-- popcorn -->
+    <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+    <script src="scripts/controllers/video.js"></script>
+     <!-- maps -->
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>    
+  </head>
+  <body ng-controller="proyectoClienteAppController">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="header">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!--<img src="/images/parking.png" width="50">-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">Parquímetros</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container white"> 
+        <div class="row">
+            <div class="col-md-1 col-xs-0 col-sm-0"></div>
+            <div class="col-md-4 col-xs-6 col-sm-6">
+                <svg width="200" height="105"></svg>
+            </div>
+            <div class="col-md-5 col-xs-6 col-sm-6">
+                <label>Minutos: </label>
+                <input type="text" id="valor" class="mytext"><br><br>
+                <button type="button" class="btn btn-success" id="empezar" >Empezar</button>
+                <button type="button"  class="btn btn-danger" id="reset" >Reset</button>
+            </div>
+            <div class="col-md-2 col-xs-0 col-sm-0"></div>
+        </div>
+    </div><br>
+    <div class="container white">
+        <div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
+    </div><br>
+     <div class="container white">
+            <div ng-controller="mapa"></div>
+            <div id="map" class="centro"></div>
+            <script src="scripts/controllers/map.js"></script>
+            <br>
+            <h3>Presiona para guardar la ubicación de tu coche</h3>
+            <button type="button" class="btn btn-success" id="coche">Guardar</button>
+
+            <h1>Calcular la ruta</h1>
+            <form id="calculate-route" name="calculate-route" action="#" method="get">
+              <label for="from">De:</label>
+              <input type="text" id="from" name="from" required="required" size="30" />
+              <a id="from-link" href="#">Obtener mi ubicación</a>
+              <br>
+                <br>
+              <label for="to">A:</label>
+              <input type="text" id="to" name="to" required="required" size="30" disabled/>
+              <br>
+                <br>
+              <input type="submit" class="btn btn-default" value="Calcular"/>
+              <input type="reset" class="btn btn-danger"/>
+            </form>
+            <p id="error"></p>
+    </div><br>
+       <div class="container white">
+        <div id="video" class="centro video"></div>
+        <div id="footnotediv"></div>
+     </div><br>
+    <div class="container white">
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <tbody>
+                        <th colspan="3" class="text-center" >COMENTARIOS</th>
+                        <tr ng-repeat = "item in listaComentarios">
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.texto}}</td>
+                            <td class="text-right">{{item.fecha}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+      <p>Si quieres dejar un comentario mándanos un mail a: <a href="parquimetro@cdmx.mx">parquimetro@cdmx.mx</a></p>
+    </div><br>
+
+    <div class="footer white">
+      <div class="container">
+         <p>Created by: Brenda San Germán &#38; Luis Ernesto Sánchez</p>
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+      
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="scripts/controllers/timer.js"></script>
+        
+</body>
+</html>

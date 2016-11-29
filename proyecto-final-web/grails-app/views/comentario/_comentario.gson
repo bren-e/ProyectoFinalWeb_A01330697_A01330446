@@ -1,0 +1,9 @@
+model{
+    Comentario comentario
+}
+
+json {
+    nombre comentario.nombre
+    fecha comentario.fecha
+    texto comentario.texto
+}

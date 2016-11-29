@@ -1,0 +1,6 @@
+
+model{
+    List<Parquimetro> parquimetroList
+}
+
+json tmpl.parquimetro(parquimetroList)
